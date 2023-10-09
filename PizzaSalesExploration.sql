@@ -25,13 +25,14 @@ pizza_types	ingredients		"Comma-delimited ingredients used in the pizza as shown
 select * from PizzaSalesPortfolio.dbo.Orders order by order_id
 select * from PizzaSalesPortfolio.dbo.OrderDetails order by order_details_id
 select * from PizzaSalesPortfolio.dbo.Pizzas order by pizza_id
-select * from PizzaSalesPortfolio.dbo.PizzaTypes where category ='Veggie' order by pizza_type_id where category ='Veggie'
+select * from PizzaSalesPortfolio.dbo.PizzaTypes where category ='Veggie' order by pizza_type_id 
 
 --<Let's look at Number of Customers> 
 --daily customers (orders)
 select date, count(order_id) as daily_orders, AVG(cast(count(order_id) as decimal(10,1))) over() as Average_daily_orders_overall
 from PizzaSalesPortfolio.dbo.Orders 
-group by date order by date
+group by date 
+order by date
 
 --Highlight days that have more 90 percentile of daily orders.
 select date, datename(dw, date) as day_of_week, count(order_id) as daily_orders,  
